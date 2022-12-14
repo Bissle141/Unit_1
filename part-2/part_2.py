@@ -16,7 +16,7 @@ my_authors.append("Christopher Paolini")
 # Code here
 # Example: my_authors.remove("H.G. Wells")
 my_authors.remove("Erin Morgenstern")
-print(my_authors)
+# print(my_authors)
 
 
 # Now access an element by it's index. (Remember it indexes start at 0.)
@@ -25,7 +25,7 @@ print(my_authors)
 # Example: my_authors[2]
 
 my_authors[3]
-# print(my_authors[3])
+# print("\n", my_authors[::3], "\n")
 
 # Now slice the list.
 
@@ -42,8 +42,8 @@ my_authors[1:4]
 # Code here
 # Example: my_author_tuple = ("F. Scott Fitzgerald", "J.K. Rowling", "Ernest Hemingway", "Emily Dickenson", "George Orwell", "Ray Bradbury")
 
-my_author_tuple = my_authors = ("Leigh bardugo", "V.E. Schwab", "Tolkien", "Erin Morgenstern", "Madeline Miller", "Octavia Butler", "Brandon Sanderson")
-# print(my_author_tuple.index("Leigh bardugo"))
+my_author_tuple = ("Leigh bardugo", "V.E. Schwab", "Tolkien", "Erin Morgenstern", "Madeline Miller", "Octavia Butler", "Brandon Sanderson")
+print(my_author_tuple)
 
 ### Step 3 - Sets ###
 
@@ -79,8 +79,10 @@ my_author_set.add("Hendrickson")
 # Code here
 # Example:
 
-# for book in my_authors:
-    # print(book)
+
+
+for book in my_authors:
+    print(book)
 
 for author in my_authors:
     print (author)
@@ -96,3 +98,8 @@ for author in my_author_tuple:
 
 for author in my_author_set:
     print(author)
+
+
+
+my_tuple = ('a', 'b', 'c', 'd')
+print(type(my_tuple))
