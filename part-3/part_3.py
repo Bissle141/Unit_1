@@ -6,22 +6,22 @@ my_book = {
     "pages": 374
 }
 
-my_books = {
-    1:  {
+my_books = [
+    {
         "title": "The Hunger Games",
         "author": "Suzanne Collins",
         "year": 2008,
         "rating": 4.32,
         "pages": 374
     },
-    2: {
+    {
         "title": "Six of Crows",
         "author": "Leigh Bardugo",
         "year": 2015,
         "rating": 4.5,
         "pages": 465
     }
-}
+]
 
 
 # Follow the instructions in this part of the project. Define and flesh out your function below, which should accept a dictionary as an argument when called, and return a string of the info in that book-dictionary in a user-friendly readable format.
@@ -68,29 +68,38 @@ def book_rating(book):
 
 def readable_lib(lib):
     '''Will take in library and return a readable version of it'''
-    for book_index, book in lib.items():
-        # print(book_index)
+    
+    print("\nLIBRARY:")
+    for entry in lib:
         print("-----")
-        
-        for key in book:
-            # print(key)
-            print(key, ":", book[key] )
+
+        for key in entry:
+            print(key, ":", entry[key])
         
 # readable_lib(my_books)
 
-def change_book_rating(lib, book, new_rating):
+def change_book_rating(lib, book_title, new_rating):
     '''will take in a book and new rating var and alter the books rating '''
-    lib[book]["rating"] = new_rating
+    for entry in lib:
+        if entry["title"] == book_title:
+            entry["rating"] = new_rating
+        else:
+            pass
     readable_lib(lib)
 
-# change_book_rating(my_books, 1, 2)
+# change_book_rating(my_books, "Six of Crows", 10)
 
 
-def delete_book(lib, book):
+def delete_book(lib, book_title):
     '''takes in an id and lib and will delete the accociated book from the lib.'''
-    del lib[book]
-    return(lib)
+    
+    for entry in lib:
+        if entry["title"] == book_title:
+            lib.remove(entry)
+        else:
+            pass
+    readable_lib(lib)
     
     
-print(delete_book(my_books, 1))
+delete_book(my_books, "The Hunger Games")
 
