@@ -1,3 +1,6 @@
+##### Quick note: This is not a regular readme. This .md file is meant to be used as a quick ref to look back on the topics covered during this units project. 
+
+<br></br>
 <span style="color: #e4cfff">
 
 # Unit 1 Notes
