@@ -31,10 +31,13 @@ my_books = [
 def book_parser(book):
     ''' will take a given book dictionary, parse it and return a readable output to the console '''
     book_string = f'{book["title"]} was written by {book["author"]} and published in {book["year"]}. It has {book["pages"]} pages, and has a rating of {book["rating"]}'
+    
+    
+    
     return (book_string)
     
     
-# print(book_parser(my_book))
+print(book_parser(my_book))
 
 
 # Once you are finished with that function, create several more functions which return individual pieces of information from the book.
@@ -102,4 +105,6 @@ def delete_book(lib, book_title):
     
     
 delete_book(my_books, "The Hunger Games")
+
+
 
