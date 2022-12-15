@@ -3,10 +3,10 @@ def main():
     main = True
     while main == True:
         answer = input("Would you like to add a new book, if so, input 'y', if not, input 'n' - ")
-        if answer in "y":
+        if answer.lower() in "y":
             main = False
             create_new_book()
-        elif answer in "n":
+        elif answer.lower() in "n":
             main = False
             return
         else:

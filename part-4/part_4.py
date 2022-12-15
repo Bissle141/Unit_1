@@ -18,35 +18,35 @@ library = [
 
 # Code here
 
-def create_new_book(lib):
-    title = str(input("What is the title of your book? - "))
-    author = str(input(f"Who wrote {title}? - "))
-    try:
-        year = int(input("When was it published? - "))
-    except:
-        year = int(input("Please use only numbers - "))
+# def create_new_book(lib):
+#     title = str(input("What is the title of your book? - "))
+#     author = input(f"Who wrote {title}? - ")
+#     try:
+#         year = input("When was it published? - ")
+#     except:
+#         year = input("Please use only numbers - ")
         
-    try:
-        pages = int(input(f"How many pages does {title} have? - "))
-    except:
-        pages = int(input("Please use only numbers - "))
+#     try:
+#         pages = input(f"How many pages does {title} have? - ")
+#     except:
+#         pages = input("Please use only numbers - ")
         
-    try:
-        rating = float(input(F"Out of 10, what would you rate {title}? - "))
-    except:
-        rating = float(input("Please use only numbers. - "))
+#     try:
+#         rating = input(F"Out of 10, what would you rate {title}? - ")
+#     except:
+#         rating = input("Please use only numbers. - ")
         
         
-    book_dictionary = {
-        "title": title,
-        "author": author,
-        "year": year,
-        "pages": pages,
-        "rating": rating
-    }
+#     book_dictionary = {
+#         "title": title,
+#         "author": author,
+#         "year": year,
+#         "pages": pages,
+#         "rating": rating
+#     }
 
-    lib.append(book_dictionary)
-    return lib
+#     lib.append(book_dictionary)
+#     return lib
 
 
 
@@ -58,7 +58,23 @@ def create_new_book(lib):
 
 # Code here
 
-# ^^ I altered my code above
+# def create_new_book(lib):
+#     title = str(input("What is the title of your book? - "))
+#     author = str(input(f"Who wrote {title}? - "))
+#     year = int(input("When was it published? - "))
+#     pages = int(input(f"How many pages does {title} have? - "))
+#     rating = float(input(F"Out of 10, what would you rate {title}? - "))
+
+#     book_dictionary = {
+#         "title": title,
+#         "author": author,
+#         "year": year,
+#         "pages": pages,
+#         "rating": rating
+#     }
+
+#     lib.append(book_dictionary)
+#     return lib
 
 
 ### Step 3 - Error handling
@@ -67,7 +83,35 @@ def create_new_book(lib):
 
 # Code here
 
-# ^^ I altered my code above
+# def create_new_book(lib):
+#     title = str(input("What is the title of your book? - "))
+#     author = str(input(f"Who wrote {title}? - "))
+#     try:
+#         year = int(input("When was it published? - "))
+#     except:
+#         year = int(input("Please use only numbers - "))
+        
+#     try:
+#         pages = int(input(f"How many pages does {title} have? - "))
+#     except:
+#         pages = int(input("Please use only numbers - "))
+        
+#     try:
+#         rating = float(input(F"Out of 10, what would you rate {title}? - "))
+#     except:
+#         rating = float(input("Please use only numbers. - "))
+        
+        
+#     book_dictionary = {
+#         "title": title,
+#         "author": author,
+#         "year": year,
+#         "pages": pages,
+#         "rating": rating
+#     }
+
+#     lib.append(book_dictionary)
+#     return lib
 
 
 ### Step 4 - if/elif/else
@@ -90,10 +134,10 @@ def main(lib):
     main = True
     while main == True:
         answer = input("Would you like to add a new book, if so, input 'new', or list them, then input 'list'. - ")
-        if answer in "new":
+        if answer.lower() in "new":
             main = False
             create_new_book(lib)
-        elif answer in "list":
+        elif answer.lower() in "list":
             main = False
             readable_lib(lib)
         else:
@@ -134,7 +178,6 @@ def create_new_book(lib):
 
 
 
-main(library)
 
 
 ### Step 5 - while loops
@@ -143,3 +186,6 @@ main(library)
 
 # Code here
 
+# Please see above code^^^
+
+main(library)

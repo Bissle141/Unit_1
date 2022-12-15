@@ -11,19 +11,27 @@
 
 </span>
 
-1. [Basic Python Operators](#operators)
-    * [Basic Math Operators](#basic-math-operations)
-    * [Augmented Assignment Operations](#augmented-assignment-operations)
-    * [Comparison Operators](#comparison-operators)
-    * [Boolean Operators](#boolean-operators)
-1. [Simple Biolerplates](#boiler-plates)
-    * [Functions](#function)
-    * [For Loop](#for-loop)
-    * [While Loop](#while-loop)
-1. [Lists & Tuples](#lists--tuples)
-    * [Zero Indexing](#zero-indexing)
-    * [Indexing](#indexing)
-        * [Getting a value with index](#getting-a-value-with-index)
+- [Unit 1 Notes](#unit-1-notes)
+  - [Directory](#directory)
+  - [Operators](#operators)
+    - [Basic Math Operations](#basic-math-operations)
+    - [Augmented Assignment Operations](#augmented-assignment-operations)
+      - [(most of these names I just made up and I was not creative)](#most-of-these-names-i-just-made-up-and-i-was-not-creative)
+    - [Comparison Operators](#comparison-operators)
+    - [Boolean Operators](#boolean-operators)
+      - [And, Or, and Not](#and-or-and-not)
+  - [Boiler Plates](#boiler-plates)
+    - [Function](#function)
+    - [If/Elif/Else](#ifelifelse)
+    - [For Loop](#for-loop)
+    - [While Loop](#while-loop)
+    - [Exceptions](#exceptions)
+  - [Lists \& Tuples](#lists--tuples)
+    - [Zero Indexing](#zero-indexing)
+    - [Indexing](#indexing)
+      - [Getting a value with index](#getting-a-value-with-index)
+  - [Type Conversion](#type-conversion)
+  - [Input function](#input-function)
 
 <br>
 
@@ -127,8 +135,33 @@ Example Table:
 ### Function
 
 </span>
+
+
     def func_name(param1, param2...):
         ## Function body...
+
+<br>
+<span style="color: #d2afff">
+
+### If/Elif/Else
+
+</span>
+If statments are condition based and will first check if any pased condition is true. if it is they will enact the code within them, if not they will either move onto the next check in the if/elif/else sequence or simply move on in the code.
+<br></br>
+
+Syntax:
+
+    if {condition}:
+        # runs if the if condition is true
+    elif {condition}:
+        # runs if the elif contion is true
+    elif {condition}:
+        # runs if the second elif contion is true
+    else:
+        # will only run if all of the above catches are false. 
+
+
+
 
 <br>
 <span style="color: #d2afff">
@@ -137,6 +170,8 @@ Example Table:
 
 </span>
 The 'for loop' can iterate over lists, tuples, dictionaries, sets and strings.
+<br></br>
+Syntax:
 
     for item in obj:
         # Loop body... 
@@ -148,6 +183,8 @@ The 'for loop' can iterate over lists, tuples, dictionaries, sets and strings.
 
 </span>
 A while loop will run continuious so long as the set condition is thruthy.
+<br></br>
+Syntax:
 
     while condition: 
         # While body...
@@ -155,11 +192,56 @@ A while loop will run continuious so long as the set condition is thruthy.
 Example:
     
     x = 0
-    while x < y:
+    while x <br y:
         print(x)
         x += 1  #will increment x to avoid an infinite loop
 
 IMPORTANT, make sure there is some sort of incrementor happening or that after every iteration of the loop the condition is closer to becoming false. You do not want to accidentally make an infinite loop. 
+
+<br>
+<span style="color: #d2afff">
+
+### Exceptions
+
+</span>
+
+An Exception is an Event that happens while a pogram is being executed. It is also called a "run time error". When it occurs, Python generates an exception that can be "handled" with some additional logic, which avoids code breaking.
+
+There are up to four parts of an exception: The try, except, else, and finally. 
+<br></br>
+
+Syntax:
+
+    try:
+       # The code you wish to enact but could produce an exception
+    except:
+        # The exception handler, will only fire if there is an exception/error
+    else:
+        # An else statment that will only fire if there is no exception/error
+    finally:
+        # Code which will fire everytime after all previous blocks have run.
+
+Example:
+(Taken from GeeksforGeeks.org)
+
+    def divide(x, y):
+        try:
+            # Floor Division : Gives only Fractional Part as Answer
+            result = x // y
+        except ZeroDivisionError:
+            print("Sorry ! You are dividing by zero ")
+        else:
+            print("Yeah ! Your answer is :", result)
+        finally: 
+            # this block is always executed regardless of exception generation. 
+            print('This is always executed')  
+ 
+    # Look at parameters and note the working of Program
+    divide(3, 2)
+    divide(3, 0)
+
+
+
 
 <br>
 
@@ -196,11 +278,37 @@ Remeber when idexing we begin at the 0 index and move up.
     my_tuple[0] -> 'a'
 
 <br>
+<span style="color: #e4cfff">
 
-#### Negative indexing
 
-Using negative indexing is just like regular indexing but with very handy additional functionality.
+## Type Conversion
 
-|Index:|-4|-3|-2|-1|
-|:-:|:-:|:-:|:-:|:-:|
-|Value:|a|b|c|d|e|
+</span>
+Type conversion can be used in certain cases to convered one data type to another. A string to a integer, an integer to a float and so on. 
+For the most part it is stright forward enough, however you need to pay attention to the data-type you are trying to convert. 
+Take strings for example, they are quite flexible so long as you pay attention to what you are converting, a string like "34" will have no problem being converted to an integer or a float, but if you try to convert somthing like "hello" to an integer/float, it's not gonna work. So just keep this in mind when converting.
+<br></br>
+
+Syntax:
+
+    num = 2.74
+    num = int(num) ==> num = 2
+    num = str(num) ==> num = "2"
+    
+<br>
+
+---
+
+<br>
+<span style="color: #e4cfff">
+
+
+## Input function
+
+</span>
+The input function will utilize the terminal and request the user input soe sort of value. By default the users input will be a string, but you can utilize type conversion on an input to change that.
+
+<br></br>
+Syntax:
+        
+    input("A string to prompt user. \n")
