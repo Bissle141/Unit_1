@@ -26,7 +26,7 @@ def create_new_book():
         rating = float(input("Please use only numbers. - "))  
         
     with open("library.txt", "a") as my_library:
-        my_library.write(f"\n{title}, {author}, {year}, {pages}, {rating}")
+        my_library.write(f"{title}, {author}, {year}, {pages}, {rating}\n")
         my_library.close()
     
     main()
@@ -44,7 +44,6 @@ def txt_to_list(library_txt):
     with open(library_txt, "r") as my_library:
         file = my_library.readlines()
         
-
         for line in file:
             line = line.strip()
             
@@ -59,14 +58,18 @@ def txt_to_list(library_txt):
             }
             
             lib_list.append(book)
-        
-        for i in range(len(lib_list)):
-            print(f"-----Book {i+1}-----")
-            
-            print(f'Title: {lib_list[i]["title"]}\nAuthor: {lib_list[i]["author"]}\nYear: {lib_list[i]["year"]}\nPages: {lib_list[i]["pages"]}\nRating: {lib_list[i]["rating"]} \n')
     
-    main()
     return (lib_list)
+
+
+def readable(book_list):
+    '''takes in the book-list and prints a readable rep to the console. should be called following txt_to_list function'''
+    
+    for i in range(len(book_list)):
+        print(f"\n-----Book {i+1}-----")
+        
+        print(f'Title: {book_list[i]["title"]}\nAuthor: {book_list[i]["author"]}\nYear: {book_list[i]["year"]}\nPages: {book_list[i]["pages"]}\nRating: {book_list[i]["rating"]}')
+    print('\n')
 
         
 
@@ -84,21 +87,83 @@ def txt_to_list(library_txt):
 
 # delete a book, avg ratings, search for a book by title or author.
 
+def del_book(lib, book_to_del):
+    '''will delete a book from the lib'''
+    
+    with open(lib, "r") as fr:
+        lines = fr.readlines()
+        
+        with open(lib, "w") as fw:
+            for line in lines:
+                
+                if book_to_del not in line.lower():
+                    fw.write(line)
+    
+    print("--- Book Deleted ---")
+    
+    
+def avg_rate(lib):
+    '''Will get the rating for all the books and avg it'''
+    
+    ratings = []
+    
+    for book in lib:
+        ratings.append(float(book["rating"]))
+    
+    avg_rating = sum(ratings) / len(ratings)
+    print("\nAvgerage Rating:", avg_rating)    
+    return avg_rating
+    
+def search_lib(lib, title):
+    '''Will seatch passed library.txt'''
+    
+    for book in lib:
+        if title in book['title'].lower():
+            print(f'\nTitle: {book["title"]}\nAuthor: {book["author"]}\nYear: {book["year"]}\nPages: {book["pages"]}\nRating: {book["rating"]}')
+            return book
+    
+    print("\n--- BOOK NOT FOUND ---\n")
+    main()
+    
+
+
+
 
 def main():
-    '''Will start off by prompting the user for what they would like to do'''
+    '''Will initiate a command line menu which the user will be able to use to navigate the app'''
     main = True
+    
     while main == True:
-        answer = input("Add a new book, input 'new', \nView library, input 'list', \nExit, input 'exit'\n")    
+        answer = input("ACTION -- INPUT\nAdd a book -- add\nView book List -- list\nDelete a book -- del\nGet avgerage rating -- rate\nSearch by title -- sea\nExit -- exit\n")    
             
-        if answer.lower() in "new":
+        if answer.lower() in "add":
             main = False
             create_new_book()
+            
         elif answer.lower() in "list":
             main = False
-            txt_to_list("library.txt")
+            list = txt_to_list("library.txt")
+            readable(list)
+            
+        elif answer.lower() in "del":
+            main = False
+            target = input("What is the name of the book you would like to delete?\n").lower()
+            del_book("library.txt", target)
+            
+        elif answer.lower() in "rate":
+            main = False
+            list = txt_to_list("library.txt")
+            avg_rate(list)
+            
+        elif answer.lower() in "sea":
+            main = False
+            title = input("What is the name of the book you are looking for?\n").lower()
+            list = txt_to_list("library.txt")
+            search_lib(list, title)
+            
         elif answer.lower() in "exit":
             return exit
+        
         else:
             print("\n--Please enter valid input--")
 
