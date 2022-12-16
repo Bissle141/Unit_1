@@ -27,7 +27,6 @@ def create_new_book():
         
     with open("library.txt", "a") as my_library:
         my_library.write(f"{title}, {author}, {year}, {pages}, {rating}\n")
-        my_library.close()
     
     main()
     
